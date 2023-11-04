@@ -1,5 +1,5 @@
 
-
+// Java program to compute Compaund interest
 
 import java.util.*;
 class compaund{
