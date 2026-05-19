@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMS Registration</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            /* Prevents padding from breaking width */
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            text-align: center;
+            width: 400px;
+            padding: 30px;
+            border-radius: 100px;
+            background-color: rgb(68, 68, 107);
+            color: white;
+        }
+
+        .card img {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            position: relative;
+            width: 250px;
+            /* Constrain width to keep eye icon close */
+            margin: 0 auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+        }
+
+        .eye {
+            position: absolute;
+            right: 15px;
+            top: 30px;
+            /* Adjusted to sit next to the input text */
+            cursor: pointer;
+            color: black;
+        }
+
+        #message {
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            height: 20px;
+            /* Keeps layout stable */
+        }
+
+        button {
+            width: 120px;
+            height: 35px;
+            border-radius: 5px;
+            border: none;
+            background-color: blueviolet;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>EMS</h1>
+        <img src="EMS.jfif" alt="Logo" width="100px" height="70px">
+
+        <form class="form" onsubmit="return false;">
+            <label>Names</label><br>
+            <input type="text" placeholder="Type your names here" required style="width: 250px;">
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Password" onkeyup="checkMatch()" required>
+                <span class="eye" onclick="togglePassword('password')">👁️</span>
+            </div>
+
+            <div class="input-box">
+                <label>Confirm Password</label>
+                <input type="password" id="pass" placeholder="Confirm Password" onkeyup="checkMatch()" required>
+                <span class="eye" onclick="togglePassword('pass')">👁️</span>
+            </div>
+
+            <p id="message"></p>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // Toggles visibility for specific input ID
+        function togglePassword(id) {
+            let input = document.getElementById(id);
+            input.type = (input.type === "password") ? "text" : "password";
+        }
+
+        // Checks if passwords match
+        function checkMatch() {
+            let pass = document.getElementById("password").value;
+            let confirmPass = document.getElementById("pass").value;
+            let message = document.getElementById("message");
+
+            if (confirmPass === "") {
+                message.textContent = "";
+            } else if (pass === confirmPass) {
+                message.style.color = "lightgreen";
+                message.textContent = "Passwords Match";
+            } else {
+                message.style.color = "red";
+                message.textContent = "Passwords Do Not Match";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
